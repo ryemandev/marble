@@ -1,0 +1,239 @@
+/* Study: a giant notepad. One sheet of paper with a video at its head, your chart images and the page to write on.
+   Every notebook and session is one tab away. White, true black and the one soft grey. */
+
+.view.sy { --plate: #000; --on-plate: #fff; --on-plate-2: #c4c4c2; max-width: 1040px; margin: 0 auto; padding: 8px 0 40px; }
+.sp { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+
+/* ------- The bar ------- */
+.sp-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.sp-tabs { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--panel); }
+.sp-tabs button { min-height: 38px; padding: 0 16px; border: 0; border-radius: 999px; background: none; color: var(--text-2); font: 600 14px var(--sans); letter-spacing: -0.01em; white-space: nowrap; cursor: pointer; transition: background-color 0.16s var(--ease), color 0.16s var(--ease); }
+.sp-tabs button:hover { color: var(--text); }
+.sp-tabs button[aria-pressed="true"] { background: #000; color: #fff; }
+.sp-new { display: inline-flex; align-items: center; gap: 6px; flex: none; min-height: 46px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--panel); color: var(--text); font: 600 14px var(--sans); letter-spacing: -0.01em; cursor: pointer; transition: background-color 0.16s var(--ease), transform 0.16s var(--ease); }
+.sp-new:hover { background: var(--panel-2); }
+.sp-new:active { transform: scale(0.97); }
+.sp-notice { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-radius: var(--r-tile); background: var(--panel); font-size: 14px; }
+.sp-notice button { border: 0; background: none; padding: 4px 0; color: var(--text); font: 600 14px var(--sans); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* ------- The sheet ------- */
+/* The sheet is as wide as the screen gives it. The writing keeps to a column you can read. */
+.sp-pad { --gut: max(28px, calc((100cqw - 760px) / 2)); position: relative; display: flex; flex-direction: column; min-width: 0; border-radius: var(--r-panel); background: var(--panel); overflow: clip; container-type: inline-size; }
+
+/* The video heads the sheet. Once you've played it, it stays in sight while the writing moves under it. */
+.sp-video:has(.st-video) { background: #000; }
+.sp-video:has(.st-video):not(:has(.st-lv-poster)) { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 4; }
+.view.sy .sp-video .st-video { display: block; width: min(100cqw, calc(min(calc(var(--vh, 1vh) * 46), 480px) * 16 / 9)); max-width: 100%; margin: 0 auto; border-radius: 0; }
+.view.sy .st-lv-poster img { filter: grayscale(1) contrast(1.3) brightness(0.3); }
+.view.sy .st-lv-poster:hover img { filter: grayscale(1) contrast(1.3) brightness(0.38); }
+
+.sp-slot { padding: 20px var(--gut) 0; }
+.sp-slot-field { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 12px; border-radius: var(--r-thumb); background: var(--bg); transition: box-shadow 0.16s var(--ease); }
+.sp-slot-field:focus-within { box-shadow: 0 0 0 2px #000; }
+.sp-slot-field i { flex: none; display: grid; place-items: center; width: 32px; height: 32px; padding-left: 1px; border-radius: 50%; background: #000; color: #fff; }
+.sp-slot-field input { flex: 1; min-width: 0; min-height: 44px; font: 500 16px var(--sans); letter-spacing: -0.01em; }
+.sp-slot-field input::placeholder { color: var(--text-2); opacity: 1; }
+.sp-slot-field span { flex: none; font-size: 13px; color: var(--text-2); }
+.sp-slot-field button { flex: none; min-height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--panel); color: var(--text); font: 500 14px var(--sans); cursor: pointer; transition: transform 0.16s var(--ease); }
+.sp-slot-field button:active { transform: scale(0.97); }
+
+/* Your first session opens under a picture, with the one thing to do on it */
+.sp-slot.first { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; min-height: clamp(300px, calc(var(--vh, 1vh) * 44), 400px); padding: 28px var(--gut); background: #000; color: #fff; }
+.sp-slot.first img { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; filter: var(--pic-press) brightness(0.56); }
+.sp-slot.first h2 { margin: 0; max-width: 15ch; font-family: var(--display); font-weight: 800; font-size: clamp(30px, 6.4cqw, 46px); line-height: 1.06; letter-spacing: -0.045em; }
+.sp-slot.first .sp-slot-field { color: var(--text); }
+
+.sp-sheet { position: relative; flex: 1; display: flex; flex-direction: column; min-height: max(440px, calc(var(--vh, 1vh) * 100 - 340px)); padding: 18px var(--gut) 56px; cursor: text; }
+.sp-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; cursor: default; }
+.sp-where { display: flex; gap: 6px; min-width: 0; margin: 0; font-size: 13px; color: var(--text-2); white-space: nowrap; }
+.sp-where span { flex: none; }
+.sp-where .sp-on { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.sp-where span + span:not(:empty)::before { content: "· "; }
+/* A phone has room for the day and whether it's saved. The notebook's name stays in All notebooks. */
+@container (max-width: 520px) { .sp-where .sp-on { display: none; } }
+.sp-field { display: block; width: 100%; padding: 0; border: 0; outline: 0; background: none; color: var(--text); resize: none; overflow: hidden; field-sizing: content; }
+.sp-title { margin: 18px 0 12px; font-family: var(--display); font-weight: 800; font-size: clamp(28px, 5cqw, 42px); line-height: 1.1; letter-spacing: -0.045em; }
+.sp-title::placeholder { color: #9d9d9a; opacity: 1; }
+.sp-text { flex: 1; min-height: 240px; font: 400 18px/1.62 var(--sans); letter-spacing: -0.008em; }
+.sp-text::placeholder { color: var(--text-2); opacity: 1; }
+
+.sp-tools { flex: none; display: flex; align-items: center; gap: 6px; }
+.sp-add { display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--bg); color: var(--text); font: 500 14px var(--sans); letter-spacing: -0.01em; white-space: nowrap; cursor: pointer; transition: transform 0.16s var(--ease); }
+.sp-add:active, .sp-more > button:active { transform: scale(0.97); }
+.sp-file { display: none; }
+.sp-more { position: relative; }
+.sp-more > button { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: var(--bg); color: var(--text); cursor: pointer; transition: transform 0.16s var(--ease); }
+.sp-menu { position: absolute; right: 0; top: calc(100% + 6px); z-index: 8; display: flex; flex-direction: column; min-width: 190px; padding: 6px; border-radius: 16px; background: #000; animation: sp-menu 0.12s linear both; }
+@keyframes sp-menu { from { opacity: 0; } }
+.sp-menu button { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border: 0; border-radius: 11px; background: none; color: #fff; font: 500 14px var(--sans); letter-spacing: -0.01em; white-space: nowrap; cursor: pointer; }
+.sp-menu button:hover, .sp-menu button:focus-visible { background: #1e1e1e; outline: none; }
+
+/* A saved chart stands whole, at its own shape */
+.sp-charts { display: flex; gap: 8px; margin: 4px calc(var(--gut) * -1) 20px; padding: 0 var(--gut); overflow-x: auto; scrollbar-width: none; cursor: default; }
+.sp-charts::-webkit-scrollbar { display: none; }
+.sp-chart { position: relative; flex: none; height: 200px; max-width: 86cqw; padding: 0; border: 0; border-radius: var(--r-thumb); overflow: hidden; background: #000; cursor: zoom-in; transition: transform 0.16s var(--ease); }
+.sp-chart:active { transform: scale(0.97); }
+.sp-chart img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.sp-chart i { position: absolute; left: 8px; top: 8px; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #000; color: #fff; }
+
+.sp-trade { display: flex; align-items: center; gap: 6px; margin: 0 0 18px; cursor: default; }
+.sp-trade > button:first-child { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border: 0; border-radius: var(--r-tile); background: var(--bg); color: var(--text); text-align: left; cursor: pointer; }
+.sp-trade span { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.sp-trade span b { font-size: 15px; font-weight: 600; text-transform: capitalize; }
+.sp-trade small { font-size: 13px; color: var(--text-2); }
+.sp-trade .num { font-family: var(--display); font-weight: 800; font-size: 15px; letter-spacing: -0.03em; }
+.sp-trade-x { display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--text-2); cursor: pointer; }
+.sp-trade-x:hover { color: var(--text); }
+
+.nb-drop { position: absolute; inset: 0; z-index: 6; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: #000; color: #fff; font-size: 15px; text-align: center; pointer-events: none; }
+
+/* ------- All notebooks ------- */
+.sp-lib { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.sp-search { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 18px; border-radius: 999px; background: var(--panel); color: var(--text-2); }
+.sp-search input { flex: 1; min-width: 0; padding: 0; border: 0; outline: 0; background: none; color: var(--text); font: 500 16px var(--sans); letter-spacing: -0.01em; }
+.sp-search input::placeholder { color: var(--text-2); opacity: 1; }
+.sp-search input::-webkit-search-cancel-button { display: none; }
+
+.sp-shelf { display: grid; grid-auto-flow: column; grid-auto-columns: 164px; gap: 10px; overflow-x: auto; scrollbar-width: none; padding: 4px; margin: -2px -4px; }
+.sp-shelf::-webkit-scrollbar { display: none; }
+.sp-book { position: relative; display: block; aspect-ratio: 3 / 4; padding: 0; border: 0; border-radius: var(--r-tile); overflow: hidden; background: #000; color: #fff; text-align: left; cursor: pointer; transition: transform 0.16s var(--ease), box-shadow 0.16s var(--ease); }
+.sp-book:active { transform: scale(0.97); }
+.sp-book[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px #000; }
+.sp-book img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--tone, var(--pic-press)); }
+/* The words sit on a solid foot, so the picture needs no dimming */
+.sp-book span { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 2px; padding: 10px 14px 12px; background: #000; }
+.sp-book b { font-family: var(--display); font-weight: 800; font-size: 17px; line-height: 1.1; letter-spacing: -0.035em; }
+.sp-book small { font-size: 13px; font-weight: 500; color: #c4c4c2; }
+.sp-book.add { display: grid; place-items: center; background: var(--panel); color: var(--text); }
+.sp-book.add span { background: none; }
+.sp-book.add b { font-family: var(--sans); font-weight: 600; font-size: 14px; letter-spacing: -0.01em; text-align: center; }
+.sp-book.add:hover { background: var(--panel-2); }
+
+.sp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; min-height: 46px; }
+.sp-head h2, .sp-nb-name { margin: 0; font-family: var(--display); font-weight: 800; font-size: 24px; letter-spacing: -0.045em; line-height: 1.1; }
+.sp-nb-name { flex: 1; min-width: 0; padding: 0; border: 0; outline: 0; background: none; color: var(--text); }
+.sp-rows { display: flex; flex-direction: column; gap: 6px; }
+.sp-row { display: flex; align-items: center; min-height: 72px; border-radius: var(--r-tile); background: var(--panel); transition: background-color 0.16s var(--ease); }
+.sp-row:hover { background: var(--panel-2); }
+.sp-row-open { flex: 1; align-self: stretch; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 8px 10px 18px; border: 0; background: none; color: var(--text); text-align: left; cursor: pointer; }
+.sp-row-x { flex: none; margin-right: 8px; color: var(--text-2); }
+.sp-row-words { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sp-row-words b { font-size: 16px; font-weight: 500; letter-spacing: -0.015em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sp-row-words small { font-size: 13px; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sp-thumb { flex: none; display: block; width: 88px; aspect-ratio: 16 / 9; border-radius: var(--r-thumb); overflow: hidden; background: #000; }
+.sp-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; filter: var(--pic-press); }
+.sp-thumb.chart img { object-fit: contain; }
+.sp-find { display: flex; flex-direction: column; gap: 2px; padding: 12px 16px; border: 0; border-radius: var(--r-tile); background: var(--panel); color: var(--text); text-align: left; cursor: pointer; }
+.sp-find b { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 15px; font-weight: 500; overflow-wrap: anywhere; }
+.sp-find small { font-size: 13px; color: var(--text-2); }
+.sp-none { margin: 0; padding: 2px 0 8px; font-size: 15px; color: var(--text-2); }
+.sp-start { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 72px; padding: 12px 18px; border: 0; border-radius: var(--r-tile); background: #000; color: #fff; text-align: left; cursor: pointer; transition: transform 0.16s var(--ease); }
+.sp-start:active { transform: scale(0.97); }
+.sp-start span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sp-start b { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; }
+.sp-start small { font-size: 13px; color: var(--on-plate-2); }
+
+/* The setups sit on the same shelf */
+.sp-setups { margin-top: 18px; scroll-margin-top: 12px; }
+.sp-lib .pg { position: static; display: block; background: none; color: var(--text); }
+.sp-lib .pg-scroll { overflow: visible; }
+.sp-lib .pg-inner { min-height: 0; padding: 0; display: flex; flex-direction: column; }
+.sp-lib .pg-big { margin: 0 0 12px; font-size: 24px; line-height: 1.1; letter-spacing: -0.045em; }
+.pg-head { display: flex; align-items: center; min-height: 44px; }
+.pg-back { display: inline-flex; align-items: center; gap: 3px; min-height: 44px; margin-left: -4px; padding: 0 8px 0 0; border: 0; background: none; color: var(--text-2); font: 500 14px var(--sans); cursor: pointer; }
+.pg-back:hover { color: var(--text); }
+
+/* ------- A phone ------- */
+@media (max-width: 900px) {
+  .view.sy { padding: 0 0 calc(var(--bar-h) + 40px + env(safe-area-inset-bottom, 0px)); }
+  .sp-new span { display: none; }
+  .sp-new { width: 46px; padding: 0; justify-content: center; }
+  .sp-head .sp-new span { display: inline; }
+  .sp-head .sp-new { width: auto; padding: 0 16px; }
+  .sp-tabs button { padding: 0 14px; }
+  .sp-pad { --gut: 18px; border-radius: var(--r-panel); }
+  .sp-slot { padding-top: 16px; }
+  .sp-slot-field { padding-right: 8px; border-radius: var(--r-thumb); }
+  /* A phone scrolls the whole page, and .main's hidden overflow would hold the video still. Clip cuts the same edge. */
+  .main:has(.sp-video .st-video):not(:has(.st-lv-poster)) { overflow: clip; }
+  .sp-sheet { min-height: calc(var(--vh, 1vh) * 62); padding: 12px var(--gut) 32px; }
+  /* Fields are forced to 16px on a phone to stop the browser zooming. These are all bigger than that, so they can stay big. */
+  .sp-title { margin-top: 14px; font-size: 28px !important; }
+  .sp-text { font-size: 17px !important; }
+  .view.sy .sp-lib input.sp-nb-name { font-size: 24px !important; }
+  .sp-chart { height: 150px; }
+  .sp-shelf { grid-auto-columns: 150px; }
+  .sp-thumb { width: 72px; }
+}
+html.st-reading .top-mid, html.st-writing .top-mid { transform: translateY(calc(100% + 24px)); }
+
+/* ------- Setups ------- */
+.sy-plate { position: relative; flex: none; height: clamp(300px, 84vw, 360px); margin: 0 0 6px; border-radius: var(--r-panel); overflow: hidden; color: var(--on-plate); isolation: isolate; container-type: inline-size; }
+.sy-plate .ink-run { background: var(--press); }
+/* The picture stops where the ink starts, so every drip is solid black whatever the picture holds */
+.sy-plate img { height: calc(100% - 84px); background: var(--plate); filter: var(--tone, var(--pic-press)); }
+/* The name sits on solid ink, so it holds on any picture anyone picks */
+.sy-plate-name { position: absolute; left: 0; right: 0; bottom: 73px; margin: 0; padding: 14px 20px 10px; background: var(--press); color: var(--on-plate); font-size: min(44px, calc((100cqi - 40px) / (var(--w, 8) * 0.68))); line-height: 1.02; letter-spacing: -0.045em; opacity: 0; transition: opacity 0.3s linear; }
+.ink-pic.in .sy-plate-name { opacity: 1; transition-delay: 0.5s; }
+
+.sy-tools { flex: none; display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.sy-add { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--press); color: var(--paper); font: 600 15px var(--sans); letter-spacing: -0.01em; cursor: pointer; }
+.sy-add.wide { flex: none; width: 100%; margin-bottom: 14px; }
+.sy-round { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border: 0; border-radius: 50%; background: var(--panel); color: var(--text); cursor: pointer; }
+.sy-link { border: 0; background: none; padding: 8px 0; color: var(--text); font: 500 14px var(--sans); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; cursor: pointer; }
+.sy-empty { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; width: 100%; min-height: 150px; padding: 20px; border: 0; border-radius: var(--r-panel); background: var(--panel); color: var(--text); text-align: left; cursor: pointer; }
+.sy-empty b { font-size: 24px; letter-spacing: -0.045em; line-height: 1.1; }
+.sy-empty span { max-width: 44ch; font-size: 15px; line-height: 1.45; color: var(--text-2); }
+
+/* The ink stands as far across as the win rate, and the picture is only there in the ink */
+.sy-tiles { --sy-pic: 150px; display: flex; flex-direction: column; gap: 6px; }
+@media (max-width: 380px) { .sy-tiles { --sy-pic: 124px; } }
+@media (min-width: 901px) { .sy-tiles { --sy-pic: 320px; } }
+.sy-tile { position: relative; display: block; width: 100%; height: 108px; padding: 0; overflow: hidden; border: 0; border-radius: var(--r-tile); background: var(--panel); color: var(--text); text-align: left; cursor: pointer; }
+.sy-tile-words { position: absolute; inset: 0 var(--sy-pic) 0 0; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; padding: 12px 10px 12px 16px; }
+.sy-tile-name { flex: none; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-family: var(--display); font-weight: 800; font-size: 20px; line-height: 1.1; letter-spacing: -0.04em; }
+.sy-tile-line { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 500; color: #a8a8a6; }
+.sy-tile-line > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sy-tile-line b { flex: none; color: #fff; font-family: var(--display); font-weight: 800; font-size: 15px; letter-spacing: -0.03em; }
+/* Words on solid black, the picture beside them with a hard edge, its sky stopping at the panel */
+.sy-tile-ink { position: absolute; inset: 0; isolation: isolate; background: linear-gradient(90deg, #000 calc(100% - var(--sy-pic)), var(--panel) 0); color: #fff; }
+.sy-tile-ink img { position: absolute; top: 0; right: 0; width: var(--sy-pic); height: 100%; object-fit: cover; filter: var(--tone, var(--pic-sky)); mix-blend-mode: multiply; }
+
+.sy-record { flex: none; position: relative; display: flex; flex-direction: column; gap: 2px; margin: 14px 0 6px; font-size: 14px; color: var(--text-2); }
+.sy-record b { margin: 2px 0 0; color: var(--text); font-size: clamp(52px, 17vw, 72px); line-height: 1.02; letter-spacing: -0.06em; }
+.sy-money { flex: none; margin: 0 0 16px; }
+.sy-money:empty { display: none; }
+.sy-money div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.sy-money dt { font-size: 14px; color: var(--text-2); }
+.sy-money dd { margin: 0; font-family: var(--display); font-weight: 800; font-size: 17px; letter-spacing: -0.035em; }
+.sy-thesis { flex: none; margin: 0 0 14px; font-size: 20px; line-height: 1.32; font-weight: 500; letter-spacing: -0.02em; color: var(--text); }
+.sy-ask { flex: none; margin-bottom: 14px; padding: 16px 18px; border: 0; border-radius: var(--r-tile); background: var(--panel); color: var(--text); font: 500 15px / 1.4 var(--sans); text-align: left; cursor: pointer; }
+.sy-when { flex: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+.sy-when li { padding: 6px 12px; border-radius: 999px; background: var(--panel); font-size: 13px; font-weight: 500; }
+.sy-rules, .sy-notes { flex: none; margin-bottom: 16px; }
+.sy-rules h2, .sy-notes h2 { font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.sy-rules header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sy-rules ol { margin: 2px 0 0; padding: 0; list-style: none; }
+.sy-rules li { display: grid; grid-template-columns: 26px minmax(0, 1fr); padding: 9px 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.4; }
+.sy-rules li span { color: var(--text-2); font-variant-numeric: tabular-nums; }
+.sy-pair { flex: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 14px; }
+.sy-trade { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: 0 0 6px; border-radius: var(--r-tile); background: var(--panel); }
+.sy-trade .sy-link { margin: 0 14px; }
+.sy-trade-open { display: flex; flex-direction: column; gap: 2px; width: 100%; padding: 14px 14px 6px; border: 0; background: none; color: var(--text); text-align: left; cursor: pointer; }
+.sy-trade-title { font-size: 13px; color: var(--text-2); }
+.sy-trade-open b { margin: 8px 0 6px; font-size: 24px; letter-spacing: -0.045em; }
+.sy-trade-name { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; }
+.sy-trade-open small { font-size: 13px; line-height: 1.35; color: var(--text-2); }
+.sy-weak { flex: none; margin: 0 0 14px; font-size: 15px; line-height: 1.4; color: var(--text-2); }
+.sy-notes { display: flex; flex-direction: column; }
+.sy-notes h2 { margin-bottom: 4px; }
+.sy-notes p { font-size: 14px; color: var(--text-2); }
+.sy-note { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 56px; padding: 10px 0; border: 0; border-top: 1px solid var(--line); background: none; color: var(--text); text-align: left; cursor: pointer; }
+.sy-note span { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.sy-note b { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.sy-note small { font-size: 13px; color: var(--text-2); }
+
+/* Anything pressable gives under a finger */
+.sy-round, .sy-add, .sy-tile, .sy-ask, .sy-note, .sy-link, .sy-trade-open, .sy-empty, .pg-back { transition: transform 0.16s var(--ease), background-color 0.18s linear, color 0.18s linear; }
+.sy-round:active, .sy-add:active, .sy-ask:active, .sy-note:active, .sy-link:active, .sy-trade-open:active, .sy-empty:active, .pg-back:active { transform: scale(0.97); }
+.sy-tile:active { transform: scale(0.97); }

@@ -1,0 +1,66 @@
+.wk { position: relative; background: var(--bg); border-top: 1px solid var(--line); padding-block: clamp(112px, calc(var(--vh, 1vh) * 15), 160px); }
+.wk-wrap { max-width: 1180px; margin: 0 auto; padding-inline: var(--gutter) max(24px, env(safe-area-inset-right, 0px)); }
+
+.wk-head { display: flex; flex-direction: column; gap: 20px; max-width: 640px; }
+.wk-head.center { align-items: center; text-align: center; margin: 0 auto; }
+.wk-title { font: 800 41px/1.06 var(--display); letter-spacing: -0.03em; color: var(--text); text-wrap: balance; }
+.wk-lede { font: 400 17px/1.6 var(--sans); color: var(--text-2); max-width: 34em; text-wrap: pretty; }
+.wk-small { margin-top: 40px; font: 400 12px/1.5 var(--sans); color: var(--text-3); }
+.wk-small.center { text-align: center; }
+
+/* Every logo in the page's white, at one weight */
+.wk-logo { display: block; max-width: 100%; height: auto; object-fit: contain; filter: brightness(0); opacity: 0.78; transition: opacity 300ms var(--ease); }
+.wk-name { display: block; max-width: 100%; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; color: var(--text); opacity: 0.78; text-wrap: balance; text-align: center; }
+
+/* ---------- Version 1: the wall ---------- */
+.ww-tabs { display: flex; gap: 4px; margin-top: 56px; padding: 4px; width: fit-content; max-width: 100%; overflow-x: auto; border-radius: 14px; box-shadow: inset 0 0 0 1px var(--line); scrollbar-width: none; }
+.ww-tabs button { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; border-radius: 10px; white-space: nowrap; font: 500 14px/1 var(--sans); color: var(--text-2); transition: color 250ms var(--ease), background-color 250ms var(--ease); }
+.ww-tabs button:hover { color: var(--text); }
+.ww-tabs button[aria-selected="true"] { color: #f5f5f5; background: var(--text); }
+.ww-count { font: 500 13px/1.25 var(--sans); opacity: 0.8; }
+
+.ww-grid { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 20px; background: var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+.ww-grid[hidden] { display: none; }
+.ww-cell {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  min-height: 156px; padding: 28px 20px 24px; background: var(--bg); text-align: center;
+  animation: ww-in 600ms var(--ease) both; animation-delay: calc(var(--i) * 28ms);
+}
+.ww-cell .wk-logo { max-height: 40px; }
+.ww-on { font: 500 13px/1.4 var(--sans); color: var(--text-3); transition: color 300ms var(--ease); }
+.ww-cell:hover { background: var(--panel); }
+.ww-cell:hover .wk-logo, .ww-cell:hover .wk-name { opacity: 1; }
+.ww-cell:hover .ww-on { color: var(--text-2); }
+.ww-any { display: flex; flex-direction: column; gap: 6px; max-width: 18em; font: 400 13px/1.45 var(--sans); color: var(--text-3); }
+.ww-any b { font-weight: 600; color: var(--text-2); }
+@keyframes ww-in { from { opacity: 0; transform: translateY(6px); } }
+
+/* ---------- Version 2: the tape ---------- */
+@keyframes wt-run { to { transform: translateX(-50%); } }
+
+@keyframes wr-run { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+@keyframes wr-in { from { opacity: 0; transform: translateY(6px); } }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 960px) {
+  .ww-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .wk-wrap { padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+  .wk-title { font-size: 40px; }
+  .wk-lede { font-size: 16px; }
+  .ww-tabs { margin-top: 40px; }
+  .ww-tabs button { height: 36px; padding: 0 12px; font-size: 13px; }
+  .ww-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ww-cell { min-height: 124px; padding: 22px 12px 18px; gap: 12px; }
+  .ww-cell .wk-logo { max-height: 32px; }
+  .ww-on { font-size: 10px; }
+}
+
+.ww-short { display: none; }
+@media (max-width: 640px) {
+  .ww-long { display: none; }
+  .ww-short { display: inline; }
+  .ww-tabs { width: 100%; }
+  .ww-tabs button { flex: 1; justify-content: center; gap: 6px; padding: 0 8px; }
+}

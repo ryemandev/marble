@@ -1,0 +1,6 @@
+/* Rolling digits */
+.odo { display: inline-flex; font-family: var(--sans); font-feature-settings: "tnum"; line-height: 1; white-space: nowrap; }
+.odo-row { display: inline-flex; }
+.odo-d { display: inline-block; height: var(--odo-h, 1em); overflow: hidden; }
+.odo-col { display: flex; flex-direction: column; transition: transform 700ms var(--ease); }
+.odo-col > span, .odo-s { display: block; height: var(--odo-h, 1em); line-height: var(--odo-h, 1em); }

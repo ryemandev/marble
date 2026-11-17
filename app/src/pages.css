@@ -1,0 +1,52 @@
+/* ---------- Avatar menu ---------- */
+.avatar-wrap { position: relative; }
+.avatar-menu {
+  position: absolute; right: 0; top: calc(100% + 10px); z-index: 60; min-width: 220px; padding: 6px; display: flex; flex-direction: column;
+  background: var(--panel-3); border: 1px solid var(--line-2); border-radius: var(--r-md); /* solid, so nothing shows through */
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7); animation: sheet-in var(--dur-2) var(--roll) both;
+}
+.avatar-menu-head { display: flex; flex-direction: column; padding: 8px 10px 10px; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+.avatar-menu-head span { font-size: var(--fs-12); color: var(--text-3); }
+.avatar-menu button { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 10px; border-radius: var(--r-sm); font-size: var(--fs-13); color: var(--text-2); text-align: left; }
+.avatar-menu button:hover, .avatar-menu button:focus-visible, .avatar-menu button[aria-current="page"] { background: rgba(var(--ink), 0.06); color: var(--text); outline: none; }
+@media (max-width: 1100px) { .avatar-menu button { min-height: 44px; } }
+
+/* (The Oracle has its own styles: views/oracle.css) */
+
+/* ---------- Ideas & polls ---------- */
+.ideas { display: flex; flex-direction: column; gap: var(--gap); }
+.polls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+@container card (max-width: 620px) { .polls { grid-template-columns: minmax(0, 1fr); } }
+.poll { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.poll-q { font-size: var(--fs-16); font-weight: 600; letter-spacing: -0.02em; }
+.poll-options { display: flex; flex-direction: column; gap: 6px; }
+.poll-opt {
+  position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  min-height: 44px; padding: 0 14px; border-radius: var(--r-sm); border: 1px solid var(--line-2); text-align: left; font-size: var(--fs-13);
+  transition: border-color var(--dur-1);
+}
+.poll-opt:hover { border-color: var(--text-3); }
+.poll-opt.mine { border-color: var(--text); }
+.poll-fill { position: absolute; inset: 0 auto 0 0; background: rgba(var(--ink), 0.07); transition: width 700ms var(--roll); animation: grow-x var(--dur-3) var(--roll) both; transform-origin: left; }
+.poll-opt.lead .poll-fill { background: rgba(var(--ink), 0.14); }
+.poll-label, .poll-pct { position: relative; display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+.poll-pct { color: var(--text-2); }
+.idea-list { display: flex; flex-direction: column; margin-top: 14px; }
+.idea { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+.idea-vote {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; height: 56px;
+  border-radius: var(--r-sm); border: 1px solid var(--line-2); color: var(--text-2); font-size: var(--fs-13);
+  transition: background var(--dur-1), color var(--dur-1), border-color var(--dur-1);
+}
+.idea-vote:hover { color: var(--text); border-color: var(--text-3); }
+.idea-vote.on { background: var(--text); border-color: var(--text); color: var(--bg); }
+.idea-title { font-size: var(--fs-14); font-weight: 600; }
+.idea-text { font-size: var(--fs-13); color: var(--text-2); margin-top: 4px; }
+.idea-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.status { display: inline-flex; align-items: center; min-height: 22px; padding: 0 9px; border-radius: 999px; font-size: var(--fs-11); font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; }
+.status.review { color: var(--text-3); box-shadow: inset 0 0 0 1px var(--line-2); }
+.status.planned { color: var(--text-2); box-shadow: inset 0 0 0 1px var(--text-3); }
+.status.progress { color: var(--text); box-shadow: inset 0 0 0 1px var(--text); }
+.status.shipped { color: var(--bg); background: var(--text); }
+
+.kpi .btn { align-self: flex-start; }

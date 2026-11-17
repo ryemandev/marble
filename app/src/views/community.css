@@ -1,0 +1,52 @@
+/* ---------- Community: a conversation in pictures ---------- */
+.community { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 18px; align-items: start; max-width: 1380px; margin: 0 auto; width: 100%; }
+
+.wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
+.post { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; cursor: pointer; background: #000; border: 1px solid var(--line); animation: rise 0.7s var(--ease) both; user-select: none; }
+.post > img { display: block; width: 100%; transition: transform 1s var(--ease), filter 0.6s; }
+.post:hover > img { transform: scale(1.03); filter: brightness(1.08); }
+.post .art-card { border: 0; border-radius: 0; }
+@keyframes burst {
+  0% { transform: scale(0.2); opacity: 0; } 25% { transform: scale(1.15); opacity: 1; }
+  45% { transform: scale(0.95); } 80% { opacity: 1; } 100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* Full-screen viewer */
+.overlay { position: fixed; inset: 0; z-index: 150; background: var(--scrim); display: flex; align-items: center; justify-content: center; gap: 14px; padding: 32px; animation: fade 0.35s ease both; }
+@keyframes fade { from { opacity: 0; } }
+.viewer { display: grid; grid-template-columns: minmax(0, 1fr) 340px; width: min(1240px, 100%); height: min(820px, 100%); border-radius: var(--r-xl); overflow: hidden; background: var(--panel); border: 1px solid var(--line-2); animation: rise 0.5s var(--ease) both; }
+.react { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--text-2); font-size: var(--fs-13); transition: all 0.2s var(--ease); }
+.react:hover { color: var(--text); background: rgba(var(--ink), 0.05); }
+.react.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+.react.on svg { fill: currentColor; }
+.react:active { transform: scale(0.92); }
+
+/* Stories */
+.story { position: relative; touch-action: none; user-select: none; -webkit-user-select: none; height: min(86vh, 820px); height: min(86dvh, 820px); aspect-ratio: 9 / 16; border-radius: var(--r-lg); overflow: hidden; background: #000; cursor: pointer; animation: rise 0.45s var(--ease) both; }
+.story img { width: 100%; height: 100%; object-fit: cover; animation: kenburns 4.5s linear both; }
+@keyframes kenburns { from { transform: scale(1.12); } to { transform: scale(1); } }
+@keyframes bar { to { width: 100%; } }
+
+/* Live wins */
+@keyframes tickNew { from { opacity: 0; transform: translateY(-14px); background: rgba(var(--ink), 0.08); } 60% { background: rgba(var(--ink), 0.05); } to { background: transparent; } }
+
+/* Top traders */
+
+@media (max-width: 1280px) {
+  .community { grid-template-columns: 1fr; }
+}
+@media (max-width: 1100px) {
+  .viewer { grid-template-columns: 1fr; height: auto; max-height: 100%; overflow-y: auto; }
+}
+
+/* Phone */
+@media (max-width: 640px) {
+  .wall { gap: 8px; }
+  .overlay { padding: 0; }
+  .viewer { border-radius: 0; height: 100%; overflow-y: auto; grid-template-rows: auto auto; }
+  .story { height: 100%; width: 100%; aspect-ratio: auto; border-radius: 0; }
+}
+
+/* ---------- Audit fixes ---------- */
+.post:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+/* Touch screens have no hover: always show who posted */

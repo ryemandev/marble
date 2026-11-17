@@ -1,0 +1,6 @@
+/* The big money figure. .pre is the sign and $, .cm the comma. No even-width digits: at this size they open gaps. */
+.money { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1; white-space: nowrap; font-variant-numeric: normal; }
+.money .pre { font-size: 0.56em; vertical-align: 0.62em; margin-right: 0.1em; letter-spacing: 0; line-height: 0; }
+.money .cm { font-size: 0.8em; }
+.money.loss { color: var(--loss-ink); }
+.money.loss.on-black { color: var(--loss-black); }

@@ -1,0 +1,24 @@
+// trademarble.app on Cloudflare: static files for the site and app, and a small Worker for the public card page at /c/<id>.
+// Build with `npm run build:web` (from app/), then deploy with `npm run deploy`.
+{
+  "name": "trademarble",
+  "compatibility_date": "2026-10-01",
+  "main": "./worker.js",
+  // Public by design, the same two values the app ships with
+  "vars": {
+    "SUPABASE_URL": "https://your-project-ref.supabase.co",
+    "SUPABASE_PUBLISHABLE_KEY": "YOUR_SUPABASE_PUBLISHABLE_KEY"
+  },
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/c/*"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  // Set these to your own domain
+  "routes": [
+    { "pattern": "your-domain.example", "custom_domain": true },
+    { "pattern": "www.your-domain.example", "custom_domain": true }
+  ]
+}

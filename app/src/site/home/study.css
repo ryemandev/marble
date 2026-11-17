@@ -1,0 +1,11 @@
+/* Study: white, then ink up through it with the storm inside */
+.sy { position: relative; background: #000; }
+.sy-stage { position: relative; height: calc(var(--vh, 1vh) * 100); overflow: hidden; isolation: isolate; background: #fff; }
+.sy-stage .sy-tank { position: absolute; left: 0; right: 0; top: calc(var(--vh, 1vh) * -8); width: 100%; height: calc(var(--vh, 1vh) * 108); border-radius: 0; background: #fff; }
+.sy-say { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 20px; max-width: 1320px; margin: 0 auto; padding: 96px var(--gutter-end) 96px var(--gutter); color: #fff; mix-blend-mode: difference; pointer-events: none; }
+.sy-title { max-width: 11ch; font: 800 clamp(44px, 9.4vw, 148px)/0.98 var(--display); letter-spacing: -0.045em; }
+.sy-more { display: flex; flex-direction: column; gap: 12px; max-width: 44ch; font: 500 clamp(17px, 1.4vw, 20px)/1.45 var(--sans); letter-spacing: -0.01em; }
+@media (max-width: 760px) {
+  .sy-say { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .sy-more { font-size: 17px; }
+}

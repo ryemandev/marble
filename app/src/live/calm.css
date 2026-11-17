@@ -1,0 +1,22 @@
+@keyframes calm-out { to { opacity: 0; } }
+@keyframes calm-in { from { opacity: 0; } }
+
+html.calm .hero-art { animation: calm-in 300ms ease-out both; filter: none !important; will-change: auto; }
+html.calm .hero-content { filter: none; }
+html.calm .eyebrow, html.calm .hero-title, html.calm .hero-quote, html.calm .hero-sub, html.calm .hero .actions { animation: none; }
+
+html.calm .app.ex-wait .main-scroll, html.calm .app.ex-wait .rail-body, html.calm .app.ex-wait .rail-foot { opacity: 0; }
+html.calm .app.ex-enter .main-scroll, html.calm .app.ex-enter .rail-body, html.calm .app.ex-enter .rail-foot { animation: calm-in 320ms ease-out both; }
+html.calm .app.ex-swap .main-scroll, html.calm .app.ex-swap .rail-body, html.calm .app.ex-swap .rail-foot { animation: calm-swap 480ms ease-out both; }
+@keyframes calm-swap { 0% { opacity: 1; } 42%, 50% { opacity: 0; } 100% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html.calm .hero-art, html.calm .app.ex-enter .main-scroll, html.calm .app.ex-enter .rail-body, html.calm .app.ex-enter .rail-foot,
+  html.calm .app.ex-swap .main-scroll, html.calm .app.ex-swap .rail-body, html.calm .app.ex-swap .rail-foot { animation: none; }
+}
+
+html.calm .app { animation: calm-in 360ms ease-out both; }
+@media (prefers-reduced-motion: reduce) { html.calm .app { animation: none; } }
+
+/* The orb's menu: a plain fade */
+html.calm .orb-menu button { animation: calm-in 200ms ease-out both; }

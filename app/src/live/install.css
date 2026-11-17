@@ -1,0 +1,51 @@
+.in-steps { list-style: none; display: grid; gap: 12px; margin: 0; padding: 0; }
+.in-steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: center; font-size: var(--fs-14); line-height: 1.4; color: var(--text-2); }
+.in-steps b { color: var(--text); font-weight: 600; }
+.in-n { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 500 12px/1 var(--mono); color: var(--text); box-shadow: inset 0 0 0 1px var(--line-2); }
+.in-glyph { display: inline-grid; place-items: center; width: 24px; height: 24px; margin: 0 2px; border-radius: 7px; vertical-align: middle; color: var(--text); background: var(--panel-3); box-shadow: inset 0 0 0 1px var(--line-2); }
+.in-glyph svg { width: 14px; height: 14px; }
+.in-other { font-size: var(--fs-13); color: var(--text-2); }
+.in-other b { color: var(--text); font-weight: 600; }
+
+.al-card .al-lede { font-size: var(--fs-13); color: var(--text-2); margin: -4px 0 14px; }
+.al-rows { display: grid; gap: 8px; }
+.al-row { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 14px; border-radius: var(--r-md); border: 1px solid var(--line); cursor: pointer; }
+.al-row:focus-within { outline: 2px solid var(--text-3); outline-offset: 2px; }
+.al-row.off { cursor: default; }
+.al-row > span:first-child { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.al-row b { font-size: var(--fs-13); font-weight: 600; }
+.al-row > span:first-child > span { font-size: var(--fs-12); line-height: 1.4; color: var(--text-3); }
+.al-row input { position: absolute; opacity: 0; pointer-events: none; }
+.al-switch { position: relative; flex: none; width: 34px; height: 20px; border-radius: 999px; background: var(--line-2); transition: background 160ms var(--ease); }
+.al-switch i { position: absolute; left: 2px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--text-2); transition: transform 160ms var(--ease); }
+.al-switch.on { background: var(--text); }
+.al-switch.on i { transform: translateX(14px); background: var(--bg); }
+.al-row.busy .al-switch { opacity: 0.5; }
+.al-sub { margin: 18px 0 8px; font-size: var(--fs-12); font-weight: 600; color: var(--text-3); letter-spacing: 0.02em; }
+.al-cal { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
+.al-cal label { flex: 1 1 140px; display: flex; flex-direction: column; gap: 6px; font-size: var(--fs-13); color: var(--text-2); }
+.al-cal .btn { flex: 1 1 160px; justify-content: center; }
+.al-note { margin-top: 12px; font-size: var(--fs-12); color: var(--text-3); line-height: 1.45; }
+.al-install { display: grid; gap: 14px; padding: 14px; border-radius: var(--r-md); border: 1px solid var(--line); margin-bottom: 4px; }
+.al-install > p { font-size: var(--fs-13); color: var(--text-2); }
+
+.in-ribbon {
+  position: fixed; z-index: 125; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + 54px + 12px + env(safe-area-inset-bottom, 0px)); max-width: 480px; margin: 0 auto;
+  border-radius: var(--r-lg); background: var(--panel-2); border: 1px solid var(--line-2); box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.8);
+  animation: in-fade 240ms ease-out both;
+}
+/* The silver edge: one hairline along the top */
+.in-ribbon::before { content: ""; position: absolute; left: 18px; right: 18px; top: -1px; height: 1px; background: linear-gradient(90deg, transparent, var(--silver), transparent); }
+.in-ribbon.leaving { animation: in-out 160ms ease-out both; pointer-events: none; }
+.in-row { display: flex; align-items: center; gap: 12px; padding: 12px 8px 12px 12px; }
+.in-icon { flex: none; width: 36px; height: 36px; border-radius: 9px; box-shadow: 0 0 0 1px var(--line-2); }
+.in-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.in-text b { font-size: var(--fs-14); font-weight: 650; letter-spacing: -0.01em; line-height: 1.25; }
+.in-text span { font-size: var(--fs-12); color: var(--text-3); line-height: 1.35; }
+.in-go { flex: none; padding: 8px 14px; }
+.in-x { flex: none; }
+.in-open { padding: 4px 16px 16px; border-top: 1px solid var(--line); animation: in-fade 240ms ease-out both; }
+.in-open .in-steps { padding-top: 12px; }
+@keyframes in-fade { from { opacity: 0; } }
+@keyframes in-out { to { opacity: 0; } }

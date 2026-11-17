@@ -1,0 +1,35 @@
+{
+  "name": "marble",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "images": "node scripts/optimize-images.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "social": "node scripts/make-social.mjs",
+    "build:web": "node scripts/build-web.mjs",
+    "deploy": "npm run build:web && npx wrangler deploy --config web/wrangler.jsonc && node scripts/indexnow.mjs",
+    "test": "node --import ./tests/hooks.mjs --test \"tests/**/*.test.js\"",
+    "indexnow": "node scripts/indexnow.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "html-to-image": "^1.11.11",
+    "livekit-client": "^2.23.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "read-excel-file": "9.3.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "marked": "^15.0.12",
+    "puppeteer-core": "^24.43.1",
+    "sharp": "^0.33.5",
+    "vite": "^5.4.21",
+    "wrangler": "^4.154.0",
+    "yaml": "^2.9.1"
+  }
+}

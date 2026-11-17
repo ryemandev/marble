@@ -1,0 +1,71 @@
+/* The strip over the example desk: what the numbers are, and the way out. 36 tall with a 44 tall hit area. */
+.ex-strip {
+  position: sticky; top: 0; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; max-width: 984px; height: 36px; margin: 0 auto 6px; padding: 0 12px 0 14px; border: 0; border-radius: 999px;
+  background: var(--panel); color: #000; font: 500 13px/18px var(--sans); white-space: nowrap; text-align: left; cursor: pointer;
+}
+/* At rest the bar above covers the top 4, so the hit area reaches a little further down to stay 44 */
+.ex-strip::after { content: ""; position: absolute; left: 0; right: 0; top: -4px; bottom: -8px; }
+.ex-strip > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--text-2); }
+.ex-strip b { font-weight: 600; color: #000; }
+.ex-strip svg { flex: none; display: block; }
+.ex-strip:hover { background: var(--panel-2); }
+.ex-strip:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+/* The same strip, lit through the walkthrough */
+.ex-strip.lit { position: fixed; margin: 0; max-width: none; z-index: 1; }
+
+.app.ex-swap .main-scroll, .app.ex-swap .rail-body, .app.ex-swap .rail-foot { animation: ex-swap 560ms var(--ease, ease) both; }
+@keyframes ex-swap { 0% { opacity: 1; } 45%, 55% { opacity: 0; } 100% { opacity: 1; } }
+
+/* The walkthrough */
+.tour { position: fixed; inset: 0; z-index: 400; animation: tour-fade 300ms ease-out both; }
+@keyframes tour-fade { from { opacity: 0; } }
+.tour-block { position: absolute; inset: 0; }
+.tour-hole { position: fixed; border-radius: 24px; pointer-events: none; box-shadow: 0 0 0 200vmax rgba(0, 0, 0, 0.86); }
+.tour-hole.glide { transition: left 480ms var(--roll), top 480ms var(--roll), width 480ms var(--roll), height 480ms var(--roll); }
+.tour-hole.none { left: 50%; top: 50%; width: 0; height: 0; }
+.tour-card {
+  position: fixed; z-index: 2; width: 340px; max-width: calc(100vw - 32px); padding: 14px 16px 16px; border-radius: 24px;
+  background: #fff; color: #000; box-shadow: none; outline: none; transition: opacity 220ms ease-out;
+}
+.tour-card:focus, .tour-card:focus-visible { outline: none; }
+.tour-top { display: flex; align-items: center; justify-content: space-between; height: 24px; }
+.tour-count { font: 400 13px/18px var(--sans); letter-spacing: 0; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.tour-x { display: grid; place-items: center; width: 44px; height: 44px; margin: 0 -13px 0 0; padding: 0; border: 0; border-radius: 50%; background: none; color: #000; cursor: pointer; }
+.tour-x:hover { background: var(--panel); }
+.tour-title { margin: 8px 0 0; font: 800 24px/28px var(--display); letter-spacing: -0.03em; text-wrap: balance; }
+.tour-text { margin: 6px 0 0; font: 400 15px/22px var(--sans); color: var(--text-2); text-wrap: pretty; }
+.tour-dots { display: flex; gap: 5px; margin-top: 14px; }
+.tour-dots i { width: 22px; height: 3px; border-radius: 2px; background: var(--panel-3); }
+.tour-dots i.on { background: #000; }
+.tour-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+.tour-skip { min-height: 44px; margin-right: auto; padding: 0; border: 0; background: none; font: 500 15px/20px var(--sans); color: #000; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; white-space: nowrap; cursor: pointer; }
+.tour-go {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 88px; height: 48px; padding: 0 20px; border: 0; border-radius: 999px;
+  background: #000; color: #fff; font: 600 15px/20px var(--sans); white-space: nowrap; cursor: pointer;
+}
+.tour-go.back { min-width: 0; background: var(--panel); color: #000; }
+.tour-go:focus-visible, .tour-skip:focus-visible, .tour-x:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+
+/* On a phone the card sits at the foot, 16 from each side */
+.tour-card.tour-sheet {
+  left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); top: auto;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: auto; max-width: none;
+}
+.app:has(> .tour) .hero-content { transform: none; opacity: 1; filter: none; }
+
+@media (max-width: 1100px) {
+  .ex-strip { top: max(8px, env(safe-area-inset-top, 0px)); max-width: none; }
+  /* The Floor runs edge to edge and gives the page no gutter, so the strip brings its own 16 */
+  .main-scroll:has(> .fl-hub) > .ex-strip { width: calc(100% - max(16px, env(safe-area-inset-left, 0px)) - max(16px, env(safe-area-inset-right, 0px))); }
+  /* Fees and payouts hangs a round button above its own top edge (this margin folds into the strip's own 6) */
+  .ex-strip + .money-view { margin-top: 16px; }
+  /* The page itself scrolls here. Clip keeps the edges as they were and lets the strip stick to the screen. */
+  .main:has(> .main-scroll > .ex-strip) { overflow: clip; }
+  /* A sheet or the tour holds the page still: the strip keeps its place and doesn't jump */
+  html.scroll-locked .ex-strip:not(.lit) { position: relative; top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour, .tour-hole.glide, .tour-card { transition: none; animation: none; }
+  .app.ex-swap .main-scroll, .app.ex-swap .rail-body, .app.ex-swap .rail-foot { animation: none; }
+}

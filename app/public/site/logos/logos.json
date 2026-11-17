@@ -1,0 +1,402 @@
+[
+  {
+    "slug": "tradovate",
+    "name": "Tradovate",
+    "file": "tradovate.png",
+    "source_url": "https://www.tradovate.com/static/3547c302fdade02d16772bf9b7787302/0128b/Tradovate-whitebg.png",
+    "kind": "png",
+    "notes": "Header logo from tradovate.com (no SVG found). PNG 1824x544 after crop."
+  },
+  {
+    "slug": "topstepx",
+    "name": "TopstepX",
+    "file": "topstepx.png",
+    "source_url": "https://s2fassets.s3.us-east-1.amazonaws.com/topstepx-login-2.png",
+    "kind": "png",
+    "notes": "Logo shown on topstepx.com/login (served from Topstep's S3 asset bucket). No SVG found. PNG 412x107 after crop."
+  },
+  {
+    "slug": "rithmic",
+    "name": "Rithmic",
+    "file": "rithmic.png",
+    "source_url": "https://www.rithmic.com/assets/RithmicLogo_White_Transparent-Bii9WrFh.png",
+    "kind": "png",
+    "notes": "Header logo from rithmic.com, cropped from a 1920x1080 canvas. PNG 1497x361 after crop."
+  },
+  {
+    "slug": "ninjatrader",
+    "name": "NinjaTrader",
+    "file": "ninjatrader.svg",
+    "source_url": "https://ninjatrader.com/media/getmedia/790ee587-3856-4caa-829d-1c219ebb1d4e/NinjaTrader-Payward-logo-white-alt.svg",
+    "kind": "svg",
+    "notes": "Current header lockup reads 'NinjaTrader by Payward'."
+  },
+  {
+    "slug": "metatrader",
+    "name": "MetaTrader 5",
+    "file": "metatrader.png",
+    "source_url": "https://www.metaquotes.net/i/main/logo-metatrader5_2x.png",
+    "kind": "png",
+    "notes": "From metaquotes.net (developer). Only 374px wide, no SVG found. 3D mark becomes a solid silhouette in monochrome. PNG 369x64 after crop."
+  },
+  {
+    "slug": "ctrader",
+    "name": "cTrader",
+    "file": "ctrader.svg",
+    "source_url": "https://a.storyblok.com/f/332895/651x224/3dbc277ccd/ctrader.svg",
+    "kind": "svg",
+    "notes": "From spotware.com/ctrader (Spotware, cTrader's developer; Storyblok CMS asset). ctrader.com header only has a 'cTrader Store' lockup. viewBox tightened from \"0 0 651 224\"."
+  },
+  {
+    "slug": "interactive-brokers",
+    "name": "Interactive Brokers",
+    "file": "interactive-brokers.svg",
+    "source_url": "https://www.interactivebrokers.com/images/common/logos/ibkr/interactive-brokers.svg",
+    "kind": "svg",
+    "notes": "Header logo from interactivebrokers.com."
+  },
+  {
+    "slug": "tradingview",
+    "name": "TradingView",
+    "file": "tradingview.svg",
+    "source_url": "https://s3.tradingview.com/pub/TradingView-media-kit.zip",
+    "kind": "svg",
+    "notes": "Official media kit (tradingview.com/media-kit), Logotypes/SVG/Black/full-logo-black.svg. viewBox tightened from \"0 0 755 129\"."
+  },
+  {
+    "slug": "dxtrade",
+    "name": "DXtrade",
+    "file": "dxtrade.svg",
+    "source_url": "https://dx.trade/app/themes/dxtrade2023/public/images/logo/logo-dxtrade.4b32b099.svg",
+    "kind": "svg",
+    "notes": "Header logo from dx.trade (Devexperts)."
+  },
+  {
+    "slug": "tradelocker",
+    "name": "TradeLocker",
+    "file": "tradelocker.svg",
+    "source_url": "https://tradelocker.com/wp-content/themes/tradelocker-child/redesign/logo.svg",
+    "kind": "svg",
+    "notes": "Header logo from tradelocker.com."
+  },
+  {
+    "slug": "match-trader",
+    "name": "Match-Trader",
+    "file": "match-trader.svg",
+    "source_url": "https://match-trader.com/wp-content/uploads/2024/04/MTR_by_MTT.svg",
+    "kind": "svg",
+    "notes": "Header logo from match-trader.com. Stacked (mark above small 'Match-Trader' text), not horizontal; no horizontal version found (the 2023 Match-Trade media kit only has company logos). viewBox tightened from \"0 0 234.50999450683594 143.4600067138672\"."
+  },
+  {
+    "slug": "topstep",
+    "name": "Topstep",
+    "file": "topstep.svg",
+    "source_url": "https://cdn.prod.website-files.com/69e902b0a74d3d99a517f56d/6ad67a3d451ad6032f15ec28_Topstep%20White_R.svg",
+    "kind": "svg",
+    "notes": "Header logo from topstep.com."
+  },
+  {
+    "slug": "apex",
+    "name": "Apex Trader Funding",
+    "file": "apex.svg",
+    "source_url": "https://apextraderfunding.com/app/plugins/apex-features/assets/src/images/apex-logo-light.svg",
+    "kind": "svg",
+    "notes": "Header logo from apextraderfunding.com."
+  },
+  {
+    "slug": "tradeify",
+    "name": "Tradeify",
+    "file": "tradeify.svg",
+    "source_url": "https://cdn.prod.website-files.com/679b064a680c614548672a06/6a82f59b2b2b53f7c664d19e_logo-light%20(1).svg",
+    "kind": "svg",
+    "notes": "Header logo from tradeify.co; current lockup is 'tradeify [futures]' with a filled badge (reads as knockout text in monochrome)."
+  },
+  {
+    "slug": "myfundedfutures",
+    "name": "MyFundedFutures",
+    "file": "myfundedfutures.svg",
+    "source_url": "https://res.cloudinary.com/myfundedfutures/image/upload/v1731010648/Main%20website%20dev/mffu_logo_white_6494f127a4.svg",
+    "kind": "svg",
+    "notes": "Header logo from myfundedfutures.com (Cloudinary-hosted). viewBox tightened from \"0 0 666 196\"."
+  },
+  {
+    "slug": "take-profit-trader",
+    "name": "Take Profit Trader",
+    "file": "take-profit-trader.svg",
+    "source_url": "https://takeprofittrader.com/assets/desktop-logo.svg",
+    "kind": "svg",
+    "notes": "Header logo from takeprofittrader.com."
+  },
+  {
+    "slug": "lucid",
+    "name": "Lucid Trading",
+    "file": "lucid.png",
+    "source_url": "https://lucidtrading.com/wp-content/uploads/2025/02/Untitled-design-2025-10-22T181841.622.png",
+    "kind": "png",
+    "notes": "LOW-RES: header logo is only 174x90 and no larger/SVG version found (site behind Cloudflare challenge). Orb mark becomes a solid disc in monochrome. PNG 169x69 after crop."
+  },
+  {
+    "slug": "tradeday",
+    "name": "TradeDay",
+    "file": "tradeday.png",
+    "source_url": "https://cdn.prod.website-files.com/696509b94e1d014f63369766/6a198aa7c5696f2d00ddad82_TRADE%20DAY%202.0.webp",
+    "kind": "png",
+    "notes": "Header logo from tradeday.com (WebP converted to PNG); current lockup includes a '2.0' badge. PNG 899x164 after crop."
+  },
+  {
+    "slug": "elite-trader-funding",
+    "name": "Elite Trader Funding",
+    "file": "elite-trader-funding.svg",
+    "source_url": "https://elitetraderfunding.app/brand/logo-long-light.svg",
+    "kind": "svg",
+    "notes": "Header logo from elitetraderfunding.app (elitetraderfunding.com redirects there)."
+  },
+  {
+    "slug": "phidias",
+    "name": "Phidias Propfirm",
+    "file": "phidias.png",
+    "source_url": "https://phidiaspropfirm.com/wp-content/uploads/2026/06/phidias-logo.png",
+    "kind": "png",
+    "notes": "From phidiaspropfirm.com media library. Logo is a stacked 'PP' monogram with tiny 'PHIDIAS PROPFIRM' text; no horizontal wordmark found. PNG 2439x1588 after crop."
+  },
+  {
+    "slug": "earn2trade",
+    "name": "Earn2Trade",
+    "file": "earn2trade.svg",
+    "source_url": "https://www.earn2trade.com/assets/E2T_Logo_Dark.svg",
+    "kind": "svg",
+    "notes": "Header logo from earn2trade.com."
+  },
+  {
+    "slug": "bulenox",
+    "name": "Bulenox",
+    "file": "bulenox.png",
+    "source_url": "https://bulenox.com/assets/logo-iXtDrF5P.svg",
+    "kind": "png",
+    "notes": "The site's logo.svg is just a wrapper around an embedded 2243x652 PNG; that PNG was extracted. Includes 'just become a trader' tagline. PNG 2243x652 after crop."
+  },
+  {
+    "slug": "funded-futures-network",
+    "name": "Funded Futures Network",
+    "file": "funded-futures-network.png",
+    "source_url": "https://fundedfuturesnetwork.com/static/img/ffn-logo.png",
+    "kind": "png",
+    "notes": "Header logo from fundedfuturesnetwork.com. No SVG found. PNG 709x160 after crop."
+  },
+  {
+    "slug": "ftmo",
+    "name": "FTMO",
+    "file": "ftmo.svg",
+    "source_url": "https://ftmo.com/en/",
+    "kind": "svg",
+    "notes": "Inline header SVG from ftmo.com."
+  },
+  {
+    "slug": "fundednext",
+    "name": "FundedNext",
+    "file": "fundednext.svg",
+    "source_url": "https://fundednext.com/",
+    "kind": "svg",
+    "notes": "Inline header SVG from fundednext.com."
+  },
+  {
+    "slug": "the5ers",
+    "name": "The5ers",
+    "file": "the5ers.svg",
+    "source_url": "https://the5ers.com/images/menu/logo.svg",
+    "kind": "svg",
+    "notes": "Official '5ers' logo from the5ers.com (homepage header currently shows a seasonal animation instead). Compact mark, not a long wordmark."
+  },
+  {
+    "slug": "e8",
+    "name": "E8 Markets",
+    "file": "e8.png",
+    "source_url": "https://e8markets.com/images/logos/logo_e8marktes_fx_cry.png",
+    "kind": "png",
+    "notes": "Header logo from e8markets.com. No SVG found. PNG 805x160 after crop."
+  },
+  {
+    "slug": "fundingpips",
+    "name": "FundingPips",
+    "file": "fundingpips.svg",
+    "source_url": "https://fundingpips.com/",
+    "kind": "svg",
+    "notes": "Inline header SVG from fundingpips.com (uses currentColor)."
+  },
+  {
+    "slug": "fxify",
+    "name": "FXIFY",
+    "file": "fxify.svg",
+    "source_url": "https://fxify.com/",
+    "kind": "svg",
+    "notes": "Inline header SVG from fxify.com. viewBox tightened from \"0 0 182 34\"."
+  },
+  {
+    "slug": "goat",
+    "name": "Goat Funded Trader",
+    "file": "goat.png",
+    "source_url": "https://files.alia-prod.com/58789c823309be5e3c848794c8096dee.webp-1755271121068",
+    "kind": "png",
+    "notes": "Transparent version embedded on goatfundedtrader.com via its Alia widget (hosted on files.alia-prod.com); the site's own nav logo (Webflow CDN) has an opaque black background. WebP converted to PNG. PNG 560x189 after crop."
+  },
+  {
+    "slug": "aqua",
+    "name": "Aqua Funded",
+    "file": "aqua.svg",
+    "source_url": "https://cdn.prod.website-files.com/68b69f4a2b57f5b22e3f9954/68b964fb52e1bd3655f1db83_footer-logo.svg",
+    "kind": "svg",
+    "notes": "Footer wordmark from aquafunded.com."
+  },
+  {
+    "slug": "for-traders",
+    "name": "For Traders",
+    "file": "for-traders.svg",
+    "source_url": "https://fortraders.com/",
+    "kind": "svg",
+    "notes": "Inline header SVG from fortraders.com; 'traders' sits in a filled box (reads as knockout text in monochrome)."
+  },
+  {
+    "slug": "alpha-capital",
+    "name": "Alpha Capital Group",
+    "file": "alpha-capital.svg",
+    "source_url": "https://alphacapitalgroup.uk/images/Alpha-Logo-White-SVG.svg",
+    "kind": "svg",
+    "notes": "Header logo from alphacapitalgroup.uk."
+  },
+  {
+    "slug": "amp",
+    "name": "AMP Futures",
+    "file": "amp.svg",
+    "source_url": "https://www.ampfutures.com/hubfs/AMP-Logo-Horizontal-Color.svg",
+    "kind": "svg",
+    "notes": "Header logo from ampfutures.com."
+  },
+  {
+    "slug": "bybit",
+    "name": "Bybit",
+    "file": "bybit.svg",
+    "source_url": "https://www.bybit.com/en/",
+    "kind": "svg",
+    "notes": "Header logo from bybit.com, where it is inlined as a data: URI SVG; the press room (bybit.com/en/press) has no media kit. viewBox tightened from \"0 0 87 34\"."
+  },
+  {
+    "slug": "binance",
+    "name": "Binance",
+    "file": "binance.svg",
+    "source_url": "https://www.binance.com/en-GB/press",
+    "kind": "svg",
+    "notes": "Inline header SVG from binance.com (newsroom page); the newsroom's 'Binance Style Guide' link (design.binance.vision) is password-protected. Page used currentColor, set to a plain fill. viewBox tightened from \"0 0 5120 1024\"."
+  },
+  {
+    "slug": "okx",
+    "name": "OKX",
+    "file": "okx.png",
+    "source_url": "https://www.okx.com/cdn/assets/imgs/2210/DBDC29AD98D75479.png",
+    "kind": "png",
+    "notes": "'OKX logo' image on the okx.com homepage, white on transparent. No SVG or media kit found; the header logo is only a 164x72 PNG. PNG 1521x457 after crop."
+  },
+  {
+    "slug": "hyperliquid",
+    "name": "Hyperliquid",
+    "file": "hyperliquid.svg",
+    "source_url": "https://2356094849-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FyUdp569E6w18GdfqlGvJ%2Fuploads%2F1d7qVbvxY5oGFQAaaJ3a%2FHyperliquid%20SVG%20format.zip?alt=media&token=b6aef86f-fc26-49f5-af2e-51da21bb1feb",
+    "kind": "svg",
+    "notes": "Official brand kit (hyperliquid.gitbook.io/hyperliquid-docs/brand-kit, 'Hyperliquid SVG format.zip'), SVG/Hyperliquid_Light.svg: blob mark + wordmark. Same artwork as the hyperliquid.xyz header. viewBox tightened from \"0 0 856 200\"."
+  },
+  {
+    "slug": "bitget",
+    "name": "Bitget",
+    "file": "bitget.svg",
+    "source_url": "https://www.bitget.com/micro-runtime/images/logo-light.svg",
+    "kind": "svg",
+    "notes": "Organization logo named in bitget.com's page metadata (the header shows the same logo as an inline PNG). Used currentColor, set to a plain fill. viewBox tightened from \"0 0 103 32\"."
+  },
+  {
+    "slug": "coinbase",
+    "name": "Coinbase",
+    "file": "coinbase.svg",
+    "source_url": "https://downloads.ctfassets.net/q5ulk4bp65r7/55HCidNuiUBEMrOipt5gUl/b5285f163bab1ebd67809d5f599b3a22/coinbase_logos.zip",
+    "kind": "svg",
+    "notes": "Official press kit (coinbase.com/press, 'Download images'), Coinbase logos/SVG/Coinbase_Wordmark.svg. Wordmark only (the header uses the round 'C' icon)."
+  },
+  {
+    "slug": "kraken",
+    "name": "Kraken",
+    "file": "kraken.svg",
+    "source_url": "https://assets-cms.kraken.com/images/51n36hrp/facade/6b1b0a92eb0de8b2f5cc9b71ec64afdd95c7830b-650x101.svg",
+    "kind": "svg",
+    "notes": "'Kraken Logo' image on the kraken.com homepage. The site header lockup (…4d67f3f4…-650x155.svg) adds a small 'by PAYWARD' line; the press room has no logo download (logos on request). viewBox tightened from \"0 0 650 101\"."
+  },
+  {
+    "slug": "blofin",
+    "name": "BloFin",
+    "file": "blofin.svg",
+    "source_url": "https://s2.blofin.com/frontend/_home_website/_next/static/home-public-static/svg/nav/logo.svg",
+    "kind": "svg",
+    "notes": "Header logo from blofin.com. viewBox tightened from \"0 0 80 20\"."
+  },
+  {
+    "slug": "hyrotrader",
+    "name": "HyroTrader",
+    "file": "hyrotrader.svg",
+    "source_url": "https://my.hyrotrader.com/logo.svg",
+    "kind": "svg",
+    "notes": "Logo on HyroTrader's dashboard sign-in page (my.hyrotrader.com). hyrotrader.com's header uses a 346x96 PNG (bold 'Hyro') and its schema logo.svg embeds the mark as a raster, so neither was used. viewBox tightened from \"0 0 461 128\"."
+  },
+  {
+    "slug": "breakout",
+    "name": "Breakout",
+    "file": "breakout.svg",
+    "source_url": "https://www.breakoutprop.com/",
+    "kind": "svg",
+    "notes": "Inline header SVG from breakoutprop.com with its small 'powered by kraken' line removed (illegible at logo size; one shared path clipped to the mark). Matches Breakout's own tagline-free lockup on the same site (cookie banner image 'Brand=Breakout, Color=Full_dark.png'). viewBox tightened from \"0 0 187.69 50.99\"."
+  },
+  {
+    "slug": "bitfunded",
+    "name": "BitFunded",
+    "file": "bitfunded.png",
+    "source_url": "https://www.bitfunded.com/wp-content/uploads/2025/10/Group-512462-2.png",
+    "kind": "png",
+    "notes": "Header logo from bitfunded.com. No SVG found (the trader dashboard's SVG sprite just wraps a PNG). PNG 742x169 after crop."
+  },
+  {
+    "slug": "propr",
+    "name": "Propr",
+    "file": "propr.svg",
+    "source_url": "https://www.propr.xyz/images/landing/propr-wordmark.svg",
+    "kind": "svg",
+    "notes": "Header wordmark from propr.xyz (preloaded on the homepage). Its white-to-half-white fade gradient was flattened to solid white so it reads at full strength in one colour."
+  },
+  {
+    "slug": "carrot-funding",
+    "name": "Carrot Funding",
+    "file": "carrot-funding.svg",
+    "source_url": "https://carrotfunding.io/images/wp-content/uploads/2026/03/carrot-funding-logo-white.svg",
+    "kind": "svg",
+    "notes": "Header logo from carrotfunding.io (stacked 'carrot / funding.io' lockup). viewBox tightened from \"0 0 133 35\"."
+  },
+  {
+    "slug": "klein-funding",
+    "name": "Klein Funding",
+    "file": "klein-funding.png",
+    "source_url": "https://cdn.kleinfunding.com/@repo/uploads/img/48cfb53bd26b6b5b03b780de6b49dfb5.webp",
+    "kind": "png",
+    "notes": "Header logo from kleinfunding.com (same file on app.kleinfunding.com), WebP converted to PNG. Includes a small 'funding # trade' line. No SVG found. PNG 873x270 after crop."
+  },
+  {
+    "slug": "fundedbit",
+    "name": "Fundedbit",
+    "file": "fundedbit.png",
+    "source_url": "https://app.fundedbit.com/brand/logo-dark.v8.png",
+    "kind": "png",
+    "notes": "fundedbit.com is in maintenance mode, so taken from Fundedbit's dashboard sign-in page (app.fundedbit.com; also its og:image). Only 80px tall; the detailed bull head becomes a solid silhouette in monochrome. No SVG found (the app's logo .svg files are its white-label platform's 'YourPropFirm' placeholder). PNG 480x79 after crop."
+  },
+  {
+    "slug": "tradeify-crypto",
+    "name": "Tradeify Crypto",
+    "file": "tradeify-crypto.svg",
+    "source_url": "https://www.tradeifyperps.co/",
+    "kind": "svg",
+    "notes": "Header SVG on tradeifyperps.co (tradeifycrypto.co redirects there: the crypto offering, 'Tradeify 247', is becoming 'Tradeify Perps'). Lockup is 'tradeify [perps]' with a filled badge (reads as knockout text in monochrome), so it differs from tradeify.svg ('futures'). Used currentColor, set to a plain fill."
+  }
+]

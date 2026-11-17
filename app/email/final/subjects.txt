@@ -1,0 +1,12 @@
+Supabase, Authentication, Emails. Paste each file into its template, with this subject:
+
+magic-link: {{ .Token }} is your Marble sign-in code
+    (the code up front: Outlook threads same-subject emails, so an old code was easy to copy by mistake, and iPhones can offer to fill it in)
+confirm-signup: {{ .Token }} is your Marble code
+    (same reason as magic-link)
+invite: You're invited to Marble
+change-email: Confirm your new Marble email
+reset-password: Your link back into Marble
+    (Marble has no password screen, so this signs the trader in and says so)
+reauthentication: {{ .Token }} is your Marble confirmation code
+    (the code up front so phones can fill it in)

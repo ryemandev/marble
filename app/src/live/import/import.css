@@ -1,0 +1,78 @@
+.imp { width: min(920px, 100%); }
+.imp-tabs { padding: 12px 22px 0; }
+.imp-body { display: flex; flex-direction: column; gap: 18px; }
+.imp-step { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.imp-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.imp-row.spread { justify-content: space-between; }
+.imp-row select, .imp-row .input { flex: 1 1 200px; min-width: 0; max-width: 320px; }
+.imp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+.imp-grid .field { min-width: 0; }
+
+.imp-drop {
+  position: relative; display: flex; align-items: center; gap: 12px; padding: 22px 18px; border: 1px dashed var(--line-2);
+  border-radius: var(--r-lg); cursor: pointer; font-size: var(--fs-13); color: var(--text); transition: border-color 0.2s, background 0.2s;
+}
+.imp-drop:hover, .imp-drop.over { border-color: var(--text-2); background: rgba(var(--ink), 0.03); }
+.imp-drop.has { border-style: solid; }
+.imp-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+.imp-drop:focus-within { outline: 2px solid var(--text); outline-offset: 2px; }
+.imp-drop span { min-width: 0; overflow-wrap: anywhere; }
+
+.imp-error { color: var(--loss); font-size: var(--fs-13); }
+.imp-warn { color: var(--text); font-size: var(--fs-13); padding: 10px 12px; border: 1px solid var(--line-2); border-radius: var(--r-md); background: rgba(var(--ink), 0.04); }
+.imp-notes { display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-13); color: var(--text-2); padding-left: 18px; list-style: disc; }
+.imp-skips { margin-top: 6px; padding-left: 14px; font-size: var(--fs-12); color: var(--text-3); list-style: none; }
+
+.imp-cols { display: flex; flex-direction: column; gap: 10px; padding: 12px; border: 1px solid var(--line); border-radius: var(--r-md); }
+.imp-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 6px 14px; font-size: var(--fs-12); }
+.imp-map div { display: flex; gap: 6px; min-width: 0; }
+.imp-map dt { color: var(--text-3); }
+.imp-map dd { color: var(--text); overflow-wrap: anywhere; }
+
+.imp-table-wrap { overflow-x: auto; margin: 0 -4px; }
+.imp-table { min-width: 0 !important; }
+.imp-table th, .imp-table td { padding-left: 6px; padding-right: 6px; }
+.imp-table td { padding-top: 9px; padding-bottom: 9px; vertical-align: top; }
+.imp-table .r { text-align: right; }
+.imp-table tr.imp-off td { color: var(--text-3); }
+.imp-table tr.imp-off .sym, .imp-table tr.imp-off .side-tag, .imp-table tr.imp-off .win, .imp-table tr.imp-off .loss { opacity: 0.55; }
+.imp-why { display: block; font-family: var(--sans, inherit); font-size: var(--fs-11); color: var(--text-3); margin-top: 2px; max-width: 260px; white-space: normal; }
+.imp-check { margin-right: 6px; vertical-align: -2px; accent-color: var(--text); }
+
+.imp-foot { align-items: center; }
+.imp-why-not { color: var(--text); font-weight: 600; } /* why the Import button can't be pressed yet */
+.imp-foot > span { margin-right: auto; }
+
+.imp-history { display: flex; flex-direction: column; }
+.imp-history li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: var(--fs-13); }
+.imp-history li:first-child { border-top: 0; }
+.imp-history li > div { min-width: 0; overflow-wrap: anywhere; }
+.imp-history li.imp-off b { color: var(--text-3); }
+
+@media (max-width: 640px) {
+  .imp-tabs { padding: 10px 16px 0; }
+  .imp-wide { display: none; }
+  .imp-row select, .imp-row .input { max-width: none; flex-basis: 100%; }
+  .imp-foot { flex-wrap: wrap; }
+  .imp-foot > span { flex-basis: 100%; }
+  .imp-foot .btn { flex: 1 1 0; justify-content: center; }
+  .imp-history li { flex-wrap: wrap; }
+}
+
+.tsx-accounts { display: flex; flex-direction: column; }
+.tsx-accounts li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 240px) auto; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.tsx-accounts li:first-child { border-top: 0; }
+.tsx-name { display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-wrap: anywhere; font-size: var(--fs-13); }
+.tsx-accounts .field select { width: 100%; }
+@media (max-width: 640px) {
+  .tsx-accounts li { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+}
+
+/* Connected platforms: one card each */
+.conn-card { padding: 16px; border: 1px solid var(--line); border-radius: var(--r-lg); }
+.conn-head { display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: var(--fs-14, 14px); }
+.conn-form { display: flex; flex-direction: column; gap: 12px; }
+.conn-steps { display: flex; flex-direction: column; gap: 6px; padding-left: 18px; list-style: decimal; font-size: var(--fs-13); color: var(--text-2); }
+.imp-copy { color: var(--text-2); } /* a copy of a trade already on another account */
+
+/* Sync isn't offered yet: a plain note, not a button */

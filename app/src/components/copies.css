@@ -1,0 +1,41 @@
+.copy-view { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.copy-view .caps { white-space: nowrap; }
+.copy-view .segmented { margin-top: 0; }
+.copy-view .segmented button { flex: 0 0 auto; padding: 6px 12px; }
+/* Its own slim row under a screen's header */
+.copy-row { margin: -4px 0 16px; }
+.copy-acct { width: auto; max-width: 240px; padding: 7px 10px; }
+
+.copy-tag { margin-left: 6px; padding: 1px 6px; border-radius: var(--r-xs); border: 1px solid var(--line-2); font-size: var(--fs-11); font-weight: 600; color: var(--text-2);
+  vertical-align: 1px; white-space: nowrap; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.copy-tag:hover, .copy-tag[aria-expanded="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.copy-tag:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+.table tbody tr.copy-sub { background: rgba(var(--ink), 0.018); }
+.table tbody tr.copy-sub td { padding-top: 7px; padding-bottom: 7px; font-size: var(--fs-12); color: var(--text-2); border-bottom-color: rgba(var(--ink), 0.05); }
+.table tbody tr.copy-sub.sel { background: rgba(var(--ink), 0.05); }
+.table tbody tr.copy-sub .cell-date { padding-left: 30px !important; }
+.table tbody tr.copy-sub .cell-date { white-space: normal; }
+.table tbody tr.copy-sub .cell-date > span { display: inline; }
+.copy-sub-acct { color: var(--text); margin-right: 8px; }
+.copy-sub-size { color: var(--text-3); white-space: nowrap; }
+
+.copy-list { margin-top: 14px; display: grid; gap: 6px; }
+.copy-list ul { list-style: none; margin: 0; padding: 0; display: grid; border: 1px solid var(--line); border-radius: var(--r-sm); overflow: hidden; }
+.copy-list li + li { border-top: 1px solid var(--line); }
+.copy-list li button { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 12px; align-items: center; padding: 8px 10px;
+  font-size: var(--fs-12); text-align: left; transition: background 0.2s; }
+.copy-list li button:hover { background: rgba(var(--ink), 0.04); }
+.copy-list li button:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
+.copy-acct-name { min-width: 0; overflow-wrap: anywhere; line-height: 1.35; }
+.copy-list .link { justify-self: start; }
+.copy-back { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: -2px 0 10px; font-size: var(--fs-12); color: var(--text-2); }
+@media (max-width: 640px) {
+  .copy-view { width: 100%; }
+  .copy-acct { max-width: none; flex: 1 1 160px; }
+  .table tbody tr.copy-sub .cell-date { padding-left: 24px !important; }
+  /* A phone: the account whole on one line, its size under it */
+  .table tbody tr.copy-sub .cell-date > .copy-sub-acct { display: block; white-space: nowrap; }
+  .table tbody tr.copy-sub .cell-date > .copy-sub-size { display: block; }
+}
+@media (pointer: coarse) { .copy-tag { padding: 4px 8px; } }

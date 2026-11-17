@@ -1,0 +1,22 @@
+/* The statement that Marble is free: a tank the height of the screen, with the words over it in difference,
+   so wherever the ink reaches them they turn white along its edge. */
+.fr { position: relative; background: #000; }
+.fr-stage { position: relative; height: calc(var(--vh, 1vh) * 100); overflow: hidden; isolation: isolate; background: #fff; }
+.fr-stage .fr-tank { position: absolute; left: 0; right: 0; top: calc(var(--vh, 1vh) * -8); height: calc(var(--vh, 1vh) * 108); border-radius: 0; background: #fff; --tank-ink: #000; --tank-paper: #fff; }
+.fr-over { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: clamp(16px, calc(var(--vh, 1vh) * 3), 32px); padding: calc(74px + env(safe-area-inset-top, 0px)) var(--gutter-end, 28px) calc(32px + env(safe-area-inset-bottom, 0px)) var(--gutter, 28px); color: #fff; mix-blend-mode: difference; pointer-events: none; }
+.fr-title { min-height: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: clamp(0px, calc(var(--vh, 1vh) * 1), 12px); }
+.fr-mark { display: block; width: min(100%, calc(var(--vh, 1vh) * 104)); }
+.fr-mark .wordmark { display: block; width: 100%; height: auto; }
+.fr-word { display: block; font: 800 min(9.8vw, calc(var(--vh, 1vh) * 19)) / 1 var(--display); letter-spacing: -0.05em; white-space: pre; text-align: center; }
+.fr-say { display: flex; align-items: center; justify-content: space-between; gap: 32px; width: 100%; }
+.fr-say p { max-width: 40ch; font: 500 clamp(17px, 1.4vw, 20px)/1.45 var(--sans); letter-spacing: -0.01em; }
+.fr-say .cta { flex: none; color: #000; background: #fff; pointer-events: auto; }
+
+@media (max-width: 760px) {
+  .fr-over { padding-top: calc(84px + env(safe-area-inset-top, 0px)); padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .fr-mark { width: 100%; }
+  .fr-word { font-size: min(20.6vw, calc(var(--vh, 1vh) * 11)); }
+  .fr-word span { display: block; }
+  .fr-say { flex-direction: column; align-items: stretch; gap: 18px; }
+  .fr-say .cta { width: 100%; }
+}

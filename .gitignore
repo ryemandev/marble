@@ -1,0 +1,26 @@
+# Everything needed to rebuild the site, the app and the backend, nothing secret.
+
+# Dependencies and build output (rebuilt by npm install / npm run build:web)
+node_modules/
+app/dist/
+app/web/public/
+.wrangler/
+app/.wrangler/
+
+# Secrets and local settings: never in the repo
+.env
+.env.*
+!.env.example
+**/.test-pw
+**/test-users.md
+.claude/
+**/supabase/.temp/
+.env.vapid
+
+# Working files: screenshots, films and test runs (big, and some hold test logins)
+app/.scratch/
+*.log
+
+# Research screenshots of other people's products, and working images
+research_notes/**/shots/
+brand/drip-social/instagram/_row-*.png

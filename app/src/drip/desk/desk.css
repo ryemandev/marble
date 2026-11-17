@@ -1,0 +1,150 @@
+/* The top row: the date, and which money is on show */
+.desk-bar { position: relative; display: flex; align-items: center; gap: 6px; min-height: 36px; margin-bottom: -6px; }
+.desk-bar p { flex: 1; min-width: 0; font: 500 13px/18px var(--sans); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.desk-bar .pk { position: static; flex: none; }
+.desk-bar .pk-btn { min-height: 36px; max-width: 170px; }
+.desk-bar .pk-list { left: auto; right: 0; }
+.desk-range { flex: none; min-height: 36px; padding: 0 14px; border-radius: 999px; background: var(--panel); color: var(--text); font: 500 13px/18px var(--sans); }
+.desk-range[aria-pressed="true"] { background: #000; color: #fff; }
+.desk-range:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+/* The panel: the money in black, running down over a still picture, the same on any day */
+.dp { container-type: inline-size; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border-radius: var(--r-panel); background: var(--panel); }
+.dp-top { container-type: size; position: relative; aspect-ratio: 358 / 150; overflow: hidden; }
+.dp-pic { position: absolute; top: 0; background: var(--panel); left: 50%; width: max(100cqw, 100cqh * 2.3867); aspect-ratio: 358 / 150; overflow: hidden; transform: translateX(-50%); }
+.dp-pic img { position: absolute; display: block; max-width: none; height: auto; filter: var(--tone, grayscale(1) contrast(2.2)); mix-blend-mode: multiply; user-select: none; }
+.dp-pic.yours img { inset: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--pic-press); mix-blend-mode: normal; }
+.dp-drip { position: absolute; left: 0; top: -1px; display: block; width: 100%; height: auto; overflow: visible; fill: #000; pointer-events: none; }
+.dp-neck, .dp-bulb, .dp-drop { animation: var(--ms) linear var(--start) infinite; }
+.dp-neck { transform-box: fill-box; transform-origin: 50% 0; animation-name: dp-neck; }
+.dp-bulb { animation-name: dp-bulb; }
+.dp-drop { opacity: 0; animation-name: dp-drop; }
+/* The run creeps out slowly, snaps back as its drop goes, then settles */
+@keyframes dp-neck {
+  0%, 100% { transform: scaleY(1); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  64% { transform: scaleY(var(--stretch)); animation-timing-function: cubic-bezier(.2, .8, .3, 1); }
+  71% { transform: scaleY(var(--back)); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+}
+@keyframes dp-bulb {
+  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  64% { transform: translateY(var(--reach)); animation-timing-function: cubic-bezier(.2, .8, .3, 1); }
+  71% { transform: translateY(var(--eased)); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+}
+@keyframes dp-drop {
+  0%, 63.9% { opacity: 0; transform: translateY(0); }
+  64% { opacity: 1; transform: translateY(0); animation-timing-function: cubic-bezier(.5, 0, .9, .5); }
+  76% { opacity: 1; transform: translateY(420px); }
+  76.1%, 100% { opacity: 0; transform: translateY(420px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dp-neck, .dp-bulb { animation: none; }
+  .dp-drop { display: none; }
+}
+.dp-foot { position: relative; flex: none; height: 170px; color: #fff; background: #000; }
+.dp-head { position: absolute; top: 14px; left: 16px; right: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 20px; }
+.dp-head p { min-width: 0; font: 400 13px/18px var(--sans); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dp-head b { font-weight: 600; }
+.dp-days { flex: none; display: flex; gap: 3px; margin: 0; padding: 0; list-style: none; }
+.dp-days li { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; font: 600 11px/1 var(--sans); }
+.dp-days li.on { color: #000; background: #fff; }
+.dp-figure { position: absolute; left: 14px; bottom: calc(51px - 0.135em); height: 1em; margin: 0; padding: 0; border: 0; background: none; color: inherit; font-size: min(var(--size), calc((100cqw - 30px) / var(--ems))); line-height: 1; cursor: pointer; }
+.dp-figure.words { left: 16px; font: 800 52px/1 var(--display); letter-spacing: -0.03em; cursor: auto; }
+.dp-figure:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.dp-line { position: absolute; left: 16px; right: 16px; bottom: 13px; font: 500 min(14px, calc((100cqw - 32px) / (var(--chars) * 0.54)))/20px var(--sans); white-space: nowrap; }
+.dp-foot.down .dp-line { color: var(--loss-black); }
+
+/* The money row under the panel: each stretch shows its total, and tapping one puts it on the panel */
+.dk-periods { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.dk-periods button { display: flex; flex-direction: column; min-width: 0; height: 58px; padding: 11px 0 0 16px; border-radius: var(--r-tile); background: var(--panel); text-align: left; color: var(--text); font-variant-numeric: tabular-nums; }
+.dk-periods span { font: 400 12px/16px var(--sans); color: var(--text-2); white-space: nowrap; }
+.dk-periods b { font: 600 15px/20px var(--sans); letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; }
+.dk-periods .down b { color: var(--loss-ink); }
+.dk-periods button[aria-pressed="true"] { background: #000; color: #fff; }
+.dk-periods button[aria-pressed="true"] span { color: rgba(255, 255, 255, 0.72); }
+.dk-periods button[aria-pressed="true"].down b { color: var(--loss-black); }
+.dk-periods button:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+@media (max-width: 380px) {
+  .dk-periods button { padding-left: 12px; }
+}
+
+/* Nothing logged: closing the day comes first, a trade is never needed for it */
+.desk .close-pill { padding-left: 16px; }
+.close-row .close-pill.open { flex: 0 1 238px; }
+.close-log { flex: none; margin-left: auto; padding: 8px 0; font: 500 15px/20px var(--sans); color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+
+/* How far the account can fall. A firm account only. */
+.dk-ruler { display: flex; flex-direction: column; align-items: flex-start; margin-top: 8px; min-width: 0; }
+.dk-ruler-firm { display: block; height: 16px; filter: brightness(0); }
+.dk-ruler-left { margin-top: 6px; font: 800 22px/26px var(--display); letter-spacing: -0.012em; white-space: nowrap; }
+.dk-ruler-sub { font: 400 12px/16px var(--sans); color: var(--text-2); }
+.dk-ruler-line { position: relative; align-self: stretch; height: 20px; margin-top: 14px; background: linear-gradient(#000, #000) left center / 100% 1px no-repeat; }
+.dk-ruler-line i { position: absolute; }
+.dk-ruler-line .last { left: 0; top: 7px; height: 6px; background: #000; }
+.dk-ruler-line .tick { top: 4px; width: 1px; height: 12px; margin-left: -1px; background: #000; }
+.dk-ruler-line .needle { top: 0; width: 2px; height: 20px; margin-left: -2px; background: #000; }
+
+.dk-more-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.dk-box { display: flex; flex-direction: column; gap: 14px; min-width: 0; padding: 20px; border-radius: var(--r-panel); background: var(--panel); }
+.dk-box > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.dk-box h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.015em; }
+.dk-box header p { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+.dk-more { flex: none; min-height: 32px; font-size: 13px; font-weight: 600; color: var(--text); }
+.dk-none { padding: 26px 0; font-size: 14px; color: var(--text-2); text-align: center; }
+.dk-box .jn-c-dot { stroke: var(--panel); }
+.dk-box .jn-rows { background: none; }
+.dk-side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+
+.dk-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.dk-facts button { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 14px; border-radius: var(--r-tile); background: #fff; text-align: left; color: var(--text); }
+.dk-facts span { font-size: 12px; color: var(--text-2); }
+.dk-facts b { font: 800 clamp(17px, 5vw, 22px)/1.15 var(--display); letter-spacing: -0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dk-facts small { font-size: 12px; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-height: 15px; }
+
+.dk-firm { display: flex; flex-direction: column; gap: 12px; }
+.dk-firm > div { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; align-items: baseline; }
+.dk-firm span { font-size: 13px; color: var(--text-2); }
+.dk-firm b { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+.dk-firm i { grid-column: 1 / -1; display: block; height: 8px; min-width: 4px; border-radius: 4px; background: #000; }
+.dk-firm .down i { background: #b9b9b6; }
+.dk-firm-net { font-size: 14px; color: var(--text-2); }
+.dk-firm-net b { color: var(--text); font-weight: 700; }
+
+@media (min-width: 560px) {
+  .dk-facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 1101px) {
+  .dk-more-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .dk-run { grid-column: span 7; }
+  .dk-month { grid-column: span 5; }
+  .dk-factbox { grid-column: 1 / -1; }
+  .dk-recent { grid-column: span 7; }
+  .dk-side { grid-column: span 5; }
+  .dk-month .jn-wells { font-size: 12px; }
+}
+/* Each row of panels ends level: the chart and the lists take whatever height the row has */
+.dk-run .jn-curve { flex: 1 1 auto; }
+.dk-recent .jn-rows { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.dk-side .dk-box { flex: 1; }
+@media (max-width: 1100px) {
+  .dk-recent .jn-rows > :nth-child(n + 7) { display: none; }
+}
+
+/* A brand-new desk: the panel says what day it is, and the hold is straight under it */
+.dp-figure.words.day { font-size: min(64px, calc((100cqw - 32px) / (var(--chars) * 0.84))); }
+.fs-hold { display: block; min-width: 0; }
+.fs-links { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+.fs-links p { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 0; }
+.fs-links button { min-height: 44px; font: 400 16px/20px var(--sans); color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.fs-have { font: 500 13px/18px var(--sans); color: var(--text-2); }
+.fs-links button.quiet { font-size: 13px; color: var(--text-2); }
+.fs-links button:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+}
+
+/* Simulated dollars, kept out of the total and said so */
+.dk-sim { margin: 0; font-size: 13px; line-height: 1.4; color: var(--text-2); }
+.dk-sim b { color: var(--text); font-weight: 600; }
+
+@media (min-width: 1101px) {
+  .desk-left > .dp { flex: 1; }
+  .dp-top { flex: 1; aspect-ratio: auto; min-height: 240px; }
+}

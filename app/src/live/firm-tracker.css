@@ -1,0 +1,29 @@
+.ft { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-2); display: flex; flex-direction: column; gap: 8px; }
+.ft-wait { min-height: 40px; }
+.ft-head { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.ft-head .firm-logo { flex: none; }
+.ft-plan { color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ft-row { display: flex; flex-direction: column; gap: 5px; }
+.ft-row .row > span:last-child { white-space: nowrap; }
+.ft-row.met .meter > span { background: var(--silver); }
+.ft-alert { display: flex; gap: 6px; align-items: flex-start; margin: 0; font-weight: 600; line-height: 1.4; color: var(--text); }
+.ft-alert svg { flex: none; margin-top: 1px; color: var(--text-2); }
+.ft-alert.reached { padding: 8px 10px; border-radius: var(--radius-sm); background: var(--tint-2); box-shadow: inset 0 0 0 1px var(--line-2); }
+.ft-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; padding: 2px 0 0; text-align: left; }
+.ft-foot .faint { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ft-foot .link { flex: none; white-space: nowrap; }
+.ft-foot:hover .link, .ft-foot:focus-visible .link { text-decoration: underline; }
+
+/* Every rule (the "All rules" sheet) */
+.ft-all { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ft-all-row { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.ft-all-row:first-child { padding-top: 2px; }
+.ft-all-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.ft-all-label { font-size: var(--fs-12); font-weight: 600; color: var(--text-2); }
+.ft-all-head .link { flex: none; }
+.ft-all-text { margin: 4px 0 0; font-size: var(--fs-14); line-height: 1.45; }
+.ft-all-row.close .ft-all-text, .ft-all-row.reached .ft-all-text { font-weight: 600; }
+.ft-all-row.unclear .ft-all-text { color: var(--text-2); }
+.ft-all-note { margin: 4px 0 0; line-height: 1.45; }
+.ft-all-pages { margin: 4px 0 0; line-height: 1.6; overflow-wrap: anywhere; }
+.ft-all-check { margin: 12px 0 0; line-height: 1.45; }

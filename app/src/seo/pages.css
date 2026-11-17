@@ -1,0 +1,28 @@
+.pg-intro { max-width: 1240px; margin: 0 auto; padding: calc(64px + env(safe-area-inset-top, 0px) + clamp(48px, 7vw, 96px)) max(24px, env(safe-area-inset-right, 0px)) clamp(24px, 4vw, 48px) var(--gutter); }
+.pg-crumbs { display: flex; align-items: center; gap: 10px; font: 500 13px/1.25 var(--sans); color: var(--accent); }
+.pg-crumbs a { display: inline-flex; align-items: center; min-height: 32px; color: var(--accent); transition: color 250ms var(--ease); }
+.pg-crumbs a:hover { color: var(--text); }
+.pg-title { margin-top: 18px; max-width: 22ch; font: 800 clamp(25px, 3.1vw, 44px)/1.08 var(--display); letter-spacing: -0.03em; color: var(--text); text-wrap: balance; }
+.pg-lede { margin-top: 20px; max-width: 62ch; font: 400 clamp(16px, 1.25vw, 18px)/1.55 var(--sans); letter-spacing: -0.01em; color: var(--text-2); text-wrap: pretty; }
+.pg-lede a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; white-space: nowrap; transition: text-decoration-color 250ms var(--ease); }
+.pg-lede a:hover { text-decoration-color: var(--accent); }
+
+@media (max-width: 640px) {
+  .pg-intro { padding: calc(60px + env(safe-area-inset-top, 0px) + 40px) max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+  .pg-crumbs a { min-height: 44px; }
+}
+
+.pg-intro + .jx-anat .ja-head,
+.pg-intro + .px-banners .pk-head,
+.pg-intro + .qx-index .qi-head-copy,
+.pg-intro + .qx-index .qi-head > .pm-mark { display: none; }
+.pg-intro + section { border-top: 0; }
+.pg-intro + .jx-anat .ja-wrap { padding-top: clamp(24px, 3vw, 48px); }
+.pg-intro + .px-banners { padding-top: 0; }
+.pg-intro + .qx-index .qi-wrap { padding-top: clamp(24px, 3vw, 48px); }
+.pg-intro + .qx-index .qi-head { grid-template-columns: minmax(0, 420px); }
+.pg-intro + .qx-index .qi-body { margin-top: 40px; }
+
+.pg-intro + .fd-letter .fl-side .hx-kicker,
+.pg-intro + .fd-letter .fl-title { display: none; }
+.pg-intro + .fd-letter { padding-top: clamp(24px, 3vw, 48px); }

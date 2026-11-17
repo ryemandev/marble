@@ -1,0 +1,28 @@
+.month-nav { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-13); color: var(--text-2); white-space: nowrap; }
+.month-nav .num { min-width: 120px; text-align: center; color: var(--text); }
+.month-nav .icon-btn:disabled { opacity: 0.3; cursor: default; }
+.month-nav.all .num { min-width: 0; text-align: left; }
+.view-tools .month-nav.all { margin-left: 0; }
+.dash-month { display: flex; justify-content: flex-end; margin: -6px 0 2px; }
+
+/* Community, real: words first */
+
+.danger-zone { display: flex; flex-direction: column; gap: 12px; }
+.danger-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.danger-row .input { max-width: 220px; }
+
+/* The journal's review queue, for imported trades */
+.review-chip { display: inline-flex; align-items: center; gap: 6px; }
+.held-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 10px; font-size: var(--fs-12); color: var(--text-2); }
+
+.label-actions { display: inline-flex; gap: 12px; }
+
+/* Two-step sign-in */
+.ts-card p { margin: 6px 0 0; }
+.ts-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.ts-row .input { flex: 1 1 130px; min-width: 0; max-width: 180px; background: var(--bg); }
+.ts-setup img { display: block; width: 168px; height: 168px; margin: 8px 0; padding: 6px; background: #fff; border-radius: 12px; }
+.ts-key { overflow-wrap: anywhere; font-size: 13px; }
+
+.card-links { display: grid; margin: 12px 0 0; padding: 0; list-style: none; }
+.card-links li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); }

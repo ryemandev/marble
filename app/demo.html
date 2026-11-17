@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Marble · live demo</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.ico?v=4" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-96.png?v=4" type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Unbounded:wght@800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+    <script>
+      window.MARBLE_DEMO = true;
+      try { sessionStorage.setItem("marble-splash", "1"); localStorage.removeItem("marble-store-v1"); } catch (e) {}
+    </script>
+    <style>html, body { background: #fff; }</style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/demo.jsx"></script>
+  </body>
+</html>
