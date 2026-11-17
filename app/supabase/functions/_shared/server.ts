@@ -63,7 +63,3 @@ export async function remove(table: string, query: string) {
 export async function rateOk(userId: string, kind: string, max: number, window: string): Promise<boolean> {
   return (await rpc("rate_ok", { p_user: userId, p_kind: kind, p_max: max, p_window: window })) === true;
 }
-
-export async function isAdmin(userId: string) {
-  return (await rows("admins", `select=user_id&user_id=eq.${userId}`)).length > 0;
-}
