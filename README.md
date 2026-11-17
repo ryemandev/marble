@@ -51,7 +51,19 @@ Server secrets for the Edge Functions are listed in `app/supabase/functions/.env
 
 ### Database
 
-The migrations in `app/supabase/migrations-pending` build on a base schema (profiles, accounts, trades, admins and more) that is not in this repository yet, so they will not apply to an empty project on their own. Admin rights come from the `public.admins` table through `public.is_admin()`, and every admin action is checked on the server, never in the browser.
+`app/supabase/migrations` holds the complete database schema: all 81 migrations, in the order they were applied to the original production database. They contain structure only (tables, row-level security policies, functions, triggers, scheduled jobs), no data. To build a fresh database:
+
+```bash
+cd app
+npx supabase link --project-ref your-project-ref
+npx supabase db push
+```
+
+Before you run them, replace `your-project-ref` in the migrations (the scheduled jobs call your Edge Functions by URL). Secrets the jobs use are generated inside your database's Vault as the migrations run, so there is nothing to fill in for those.
+
+`app/supabase/migrations-pending` is the working copy those migrations were written in, with `ROLLBACK.md` explaining how to undo each one. Use it for reference; build from `migrations`.
+
+To become an admin, add your user ID to `public.admins` (and to `public.staff` for the staff seal in messages) in the SQL editor. Admin rights come from `public.is_admin()`, and every admin action is checked on the server, never in the browser.
 
 ## Tests
 
